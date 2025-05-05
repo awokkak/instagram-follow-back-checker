@@ -1,0 +1,18 @@
+import zipfile
+import os
+
+# Define the path to the uploaded ZIP file and extraction path
+zip_path = "/mnt/data/instagram-frmndnzaa-2025-05-05-TxOv9tnZ.zip"
+extract_path = "/mnt/data/instagram_data"
+
+# Extract the ZIP file
+with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+    zip_ref.extractall(extract_path)
+
+# List extracted files and directories for review
+extracted_files = []
+for root, dirs, files in os.walk(extract_path):
+    for file in files:
+        extracted_files.append(os.path.join(root, file))
+
+extracted_files[:10]  # Show only the first 10 for brevity
